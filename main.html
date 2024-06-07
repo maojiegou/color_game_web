@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .color_display {
+                width: 100px;
+                height: 100px;
+                border: 1px solid black;
+            }
+            .range {
+                width: 255px;
+            }
+            .number {
+                width: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="">
+            <input id="range_red" class="range" type="range" name="range" min="0" max="255" />r
+            <input type="number" class="number" id="number_red" />
+            <br />
+            <input id="range_green" class="range" type="range" name="range" min="0" max="255" />g
+            <input type="number" class="number" id="number_green" />
+            <br />
+            <input id="range_blue" class="range" type="range" name="range" min="0" max="255" />b
+            <input type="number" class="number" id="number_blue" />
+        </div>
+
+        <div id="color_display_target" class="color_display" style="float: left"></div>
+        <div id="color_display_ctrl" class="color_display" style="float: left"></div>
+        <!-- <button id="random_btn">随机颜色</button> -->
+        <button id="commit_btn">确定</button>
+        <div style="clear: both"></div>
+
+        <div style="clear: both">
+            <table>
+                <tr>
+                    <td>本次得分</td>
+                    <td id="scores">0</td>
+                </tr>
+                <tr>
+                    <td>总得分</td>
+                    <td id="scores_sum">0</td>
+                </tr>
+            </table>
+
+            <h2>历史</h2>
+
+            <table id="history"></table>
+        </div>
+
+        <script type="module" src="./dist/test.js"></script>
+    </body>
+</html>
