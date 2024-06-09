@@ -1,4 +1,5 @@
 import { Color } from "./my_type"
+import { Timer } from "./timer";
 let t = 0;
 
 let ctrlColor: Color = {
@@ -20,7 +21,8 @@ let number_red = document.getElementById("number_red") as HTMLInputElement;
 let number_green = document.getElementById("number_green") as HTMLInputElement;
 let number_blue = document.getElementById("number_blue") as HTMLInputElement;
 
-let color_display_ctrl = document.getElementById("color_display_ctrl") as HTMLInputElement;
+let color_display_ctrl = document.getElementById("bian_se_long") as HTMLInputElement;
+// let color_display_ctrl = document.getElementById("color_display_ctrl") as HTMLInputElement;
 let color_display_target = document.getElementById("color_display_target") as HTMLInputElement;
 let random_btn = document.getElementById("random_btn") as HTMLInputElement;
 let commit_btn = document.getElementById("commit_btn") as HTMLInputElement;
@@ -163,7 +165,7 @@ let updateHistory = () => {
         ctrl_td.innerText = `rgb(${cc.r}, ${cc.g}, ${cc.b})`;
         let score = colorScore(cc, tc);
 
-        
+
         score_td.innerHTML = `${score.r + score.g + score.b}<br/> ( ${score.r} , ${score.g} , ${score.b})`;
 
         target.append(color_display_target);
@@ -175,5 +177,9 @@ let updateHistory = () => {
 
 }
 
+let timer = new Timer(10);
+document.body.append(timer.el);
+timer.start();
+timer.updateSelf();
 
 init();
