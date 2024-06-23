@@ -1,5 +1,7 @@
 import { Color } from "./my_type"
 import { Timer } from "./timer";
+import { History } from "./history";
+
 let t = 0;
 
 let ctrlColor: Color = {
@@ -10,7 +12,9 @@ let targetColor: Color = {
 }
 let score_sum: Color = { r: 0, g: 0, b: 0 };
 
-let history_list: { ctrlColor: Color, targetColor: Color }[] = [];
+// let history_list: { ctrlColor: Color, targetColor: Color }[] = [];
+
+let history = new History();
 
 
 let range_red = document.getElementById("range_red") as HTMLInputElement;
@@ -30,6 +34,7 @@ let commit_btn = document.getElementById("commit_btn") as HTMLInputElement;
 let score_el = document.getElementById("scores") as HTMLInputElement;
 let scores_sum_el = document.getElementById("scores_sum") as HTMLInputElement;
 let history_el = document.getElementById("history") as HTMLInputElement;
+history_el.append(history.el);
 
 
 let changeColor = (r: number, g: number, b: number) => {
@@ -83,8 +88,8 @@ let updateScore = () => {
 let commit = () => {
     console.log(`commit`, t++)
     updateScore();
-    addHistory();
-    updateHistory();
+    history.add(ctrlColor, targetColor);
+    history.updateHistory();
     randomColor();
 }
 
@@ -117,69 +122,10 @@ let init = () => {
     commit_btn.addEventListener("click", commit)
 }
 
-let addHistory = () => {
-    history_list.push({
-        ctrlColor: { r: ctrlColor.r, g: ctrlColor.g, b: ctrlColor.b },
-        targetColor: { r: targetColor.r, g: targetColor.g, b: targetColor.b },
-    });
-}
-
-let clearHistory = () => {
-
-}
-
-let updateHistory = () => {
-    console.log(`updateHistory`, history_list)
-    // console.log(`updateHistory`)
-
-    while (history_el.children.length) {
-        history_el.removeChild(history_el.children[0]);
-    }
-
-    // history_el.childNodes.forEach(element => {
-    //     history_el.removeChild(element);
-    // })
-
-    let tr = document.createElement("tr");
-    tr.innerHTML = "<td>目标</td><td>玩家</td><td>得分</td>"
-    history_el.appendChild(tr);
-
-    for (let i = history_list.length - 1; i >= 0; i--) {
-        let tc = history_list[i].targetColor;
-        let cc = history_list[i].ctrlColor;
-
-        let oneHistory = document.createElement("tr");
-        let color_display_target = document.createElement("div");
-        let color_display_ctrl = document.createElement("div");
-        let target = document.createElement("td");
-        let ctrl_td = document.createElement("td");
-        let score_td = document.createElement("td");
-
-        color_display_target.classList.add("color_display");
-        color_display_ctrl.classList.add("color_display");
-
-        color_display_target.style.backgroundColor = `rgb(${tc.r}, ${tc.g}, ${tc.b})`;
-        color_display_ctrl.style.backgroundColor = `rgb(${cc.r}, ${cc.g}, ${cc.b})`;
-
-        target.innerText = `rgb(${tc.r}, ${tc.g}, ${tc.b})`;
-        ctrl_td.innerText = `rgb(${cc.r}, ${cc.g}, ${cc.b})`;
-        let score = colorScore(cc, tc);
-
-
-        score_td.innerHTML = `${score.r + score.g + score.b}<br/> ( ${score.r} , ${score.g} , ${score.b})`;
-
-        target.append(color_display_target);
-        ctrl_td.append(color_display_ctrl);
-
-        oneHistory.append(target, ctrl_td, score_td);
-        history_el.appendChild(oneHistory)
-    }
-
-}
 
 let timer = new Timer(10);
 document.body.append(timer.el);
 timer.start();
-timer.updateSelf();
+// timer.updateSelf();
 
 init();

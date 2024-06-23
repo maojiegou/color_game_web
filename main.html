@@ -25,7 +25,14 @@
             padding: 10px;
         }
 
+        .bian_se_long_background {
+            width: 210px;
+            height: 160px;
+        }
+
         .bian_se_long {
+            width: 200px;
+            height: 150px;
             mask-image: url(./static/bian_se_long.png);
             mask-repeat: no-repeat;
             mask-size: contain;
@@ -35,7 +42,7 @@
 </head>
 
 <body>
-    <div style="">
+    <div>
         <input id="range_red" class="range" type="range" name="range" min="0" max="255" />r
         <input type="number" class="number" id="number_red" />
         <br />
@@ -66,16 +73,15 @@
 
         <h2>历史</h2>
 
-        <table id="history"></table>
-    </div>
-
-    <div style="height: 400px;width: 500px; background-color: rgb(105, 78, 179);">
-        <div id="bian_se_long" class="bian_se_long" style="height: 300px;width: 400px;">
-            <!-- <img style="mask-image: url(./static/xiyi.png)" src="./static/xiyi3.png" alt=""> -->
+        <div id="history">
+            </table>
         </div>
-    </div>
 
-    <script type="module" src="./dist/test.js"></script>
+        <div style="height: 400px;width: 500px; background-color: rgb(105, 78, 179);">
+            <div id="bian_se_long" class="bian_se_long" style="height: 300px;width: 400px;"> </div>
+        </div>
+
+        <script type="module" src="./dist/test.js"></script>
 </body>
 
 </html>
