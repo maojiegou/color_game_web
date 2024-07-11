@@ -124,8 +124,8 @@ let init = () => {
 
 
 let timer = new Timer(10);
-document.body.append(timer.el);
-timer.start();
+(document.getElementById("game") as HTMLInputElement).append(timer.el);
+// timer.start();
 // timer.updateSelf();
 
 init();

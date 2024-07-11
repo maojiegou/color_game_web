@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./static/history.css">
     <title>Document</title>
     <style>
         .color_display {
@@ -24,42 +25,40 @@
         .background {
             padding: 10px;
         }
+        h1{
+            text-align: center;
 
-        .bian_se_long_background {
-            width: 210px;
-            height: 160px;
         }
-
-        .bian_se_long {
-            width: 200px;
-            height: 150px;
-            mask-image: url(./static/bian_se_long.png);
-            mask-repeat: no-repeat;
-            mask-size: contain;
-            background-color: rgb(105, 178, 17);
+        #menu{
+            text-align: center;
         }
     </style>
 </head>
 
 <body>
-    <div>
-        <input id="range_red" class="range" type="range" name="range" min="0" max="255" />r
-        <input type="number" class="number" id="number_red" />
-        <br />
-        <input id="range_green" class="range" type="range" name="range" min="0" max="255" />g
-        <input type="number" class="number" id="number_green" />
-        <br />
-        <input id="range_blue" class="range" type="range" name="range" min="0" max="255" />b
-        <input type="number" class="number" id="number_blue" />
+    <div id="menu">
+        <h1>调色</h1>
+        <button style="text-align: center;">开始游戏</button>
     </div>
 
-    <div id="color_display_target" class="color_display" style="float: left"></div>
-    <div id="color_display_ctrl" class="color_display" style="float: left"></div>
-    <!-- <button id="random_btn">随机颜色</button> -->
-    <button id="commit_btn">确定</button>
-    <div style="clear: both"></div>
+    <div style="display: block;" id="game">
+        <div>
+            <input id="range_red" class="range" type="range" name="range" min="0" max="255" />r
+            <input type="number" class="number" id="number_red" />
+            <br />
+            <input id="range_green" class="range" type="range" name="range" min="0" max="255" />g
+            <input type="number" class="number" id="number_green" />
+            <br />
+            <input id="range_blue" class="range" type="range" name="range" min="0" max="255" />b
+            <input type="number" class="number" id="number_blue" />
+        </div>
 
-    <div style="clear: both">
+        <div id="color_display_target" class="color_display" style="float: left"></div>
+        <div id="color_display_ctrl" class="color_display" style="float: left"></div>
+        <!-- <button id="random_btn">随机颜色</button> -->
+        <button id="commit_btn">确定</button>
+        <div style="clear: both"></div>
+
         <table>
             <tr>
                 <td>本次得分</td>
@@ -80,8 +79,9 @@
         <div style="height: 400px;width: 500px; background-color: rgb(105, 78, 179);">
             <div id="bian_se_long" class="bian_se_long" style="height: 300px;width: 400px;"> </div>
         </div>
+    </div>
 
-        <script type="module" src="./dist/test.js"></script>
+    <script type="module" src="./dist/test.js"></script>
 </body>
 
 </html>

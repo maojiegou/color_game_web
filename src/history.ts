@@ -2,7 +2,7 @@ import { Color } from "./my_type"
 
 export class History {
     data: { player: Color, target: Color }[] = [];
-    el = document.createElement("div");
+    el = document.createElement("table");
     colorScore = (player: Color, target: Color) => { return { r: -666, g: 0, b: 0 } }
 
     setColorScoreFun = (fun: (player: Color, target: Color) => Color) => {
@@ -24,8 +24,8 @@ export class History {
         let background = document.createElement("div");
         let bian_se_long = document.createElement("div");
 
-        background.classList.add("bian_se_long_background")
-        bian_se_long.classList.add("bian_se_long")
+        background.classList.add("history_bian_se_long_background")
+        bian_se_long.classList.add("history_bian_se_long")
 
         console.log(`background.style.backgroundColor = rgb(${target.r}, ${target.g}, ${target.b})`);
 
@@ -57,7 +57,8 @@ export class History {
                 let val_td = document.createElement("td");
                 let score_td = document.createElement("td");
 
-                val_td.innerText = `目标 rgb(${tc.r}, ${tc.g}, ${tc.b}) \n玩家 rgb(${pc.r}, ${pc.g}, ${pc.b})`;
+                val_td.innerHTML = `目标 <span class="history_color_span" style="background:rgb(${tc.r}, ${tc.g}, ${tc.b})"></span> rgb(${tc.r}, ${tc.g}, ${tc.b}) <br/> 
+                玩家 <span class="history_color_span" style="background:rgb(${pc.r}, ${pc.g}, ${pc.b})"></span> rgb(${pc.r}, ${pc.g}, ${pc.b})`;
 
                 let score = this.colorScore(pc, tc);
                 score_td.innerHTML = `${score.r + score.g + score.b}<br/> ( ${score.r} , ${score.g} , ${score.b})`;
